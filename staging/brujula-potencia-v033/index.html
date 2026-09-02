@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BrÃºjula PotencIA v0.3.3 â€” Staging</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="w">
+  <div class="top">
+    <div class="brand"><img src="./assets/potencia-academy-logo.webp" alt="" aria-hidden="true" style="width:54px;height:54px;object-fit:contain;display:block"><div>PotencIA Academy<small>Laboratorio de producto</small></div></div>
+    <div class="topright"><a class="stage" href="../../">PotencIA Academy</a><div class="badge">STAGING Â· v0.3.3</div></div>
+  </div>
+
+  <section class="hero">
+    <div><img src="./assets/brujula.webp" alt="" aria-hidden="true" style="width:90px;height:90px;object-fit:contain;display:block;margin-bottom:10px"><div class="k">BrÃºjula PotencIA</div><h1><span class="gr">Una pausa Ãºtil.</span><br>Una direcciÃ³n para hoy.</h1><p>Una experiencia breve de reflexiÃ³n inspirada en <b>F.O.C.U.S.</b> y <b>La SabidurÃ­a del Ajolote</b>, de la Dra. Claudia Jones. Esta iteraciÃ³n conserva la base validada de v0.3.2 e incorpora telemetrÃ­a tÃ©cnica mÃ­nima y feedback voluntario.</p></div>
+    <div class="box"><h3>El ciclo que estamos probando</h3><p>BrÃºjula no busca darte una etiqueta. Busca ayudarte a observar, elegir un foco y volver sobre lo que decidiste.</p><div class="step">1. Me observo con mÃ¡s de una pregunta</div><div class="step">2. Identifico un foco, sin convertirlo en diagnÃ³stico</div><div class="step">3. Elijo una microacciÃ³n</div><div class="step">4. Regreso y reviso quÃ© pasÃ³</div></div>
+  </section>
+
+  <div class="safety"><strong>Tu seguridad va primero.</strong> Puedes detenerte en cualquier momento. Si una pregunta te genera malestar intenso o toca una situaciÃ³n en la que tu seguridad estÃ¡ en riesgo, no necesitas continuar con BrÃºjula; busca apoyo humano de confianza o ayuda profesional adecuada a tu situaciÃ³n. Esta herramienta no sustituye atenciÃ³n clÃ­nica, legal, financiera ni de emergencia.</div>
+
+  <section class="follow" id="followCard" aria-live="polite"></section>
+
+  <section id="home">
+    <div class="choices">
+      <button type="button" class="card f" onclick="openRoute('focus')"><img src="./assets/focus.webp" alt="" aria-hidden="true" style="width:82px;height:82px;object-fit:contain;display:block;margin-bottom:8px"><h2>Necesito direcciÃ³n</h2><p>Check-in basado en F.O.C.U.S. para observar quÃ© dimensiÃ³n de propÃ³sito merece atenciÃ³n hoy.</p><span class="tag">Felicidad Â· Oportunidad Â· ConvicciÃ³n Â· Unidad Â· Sentido</span></button>
+      <button type="button" class="card a" onclick="openRoute('axo')"><img src="./assets/ajolote.webp" alt="" aria-hidden="true" style="width:82px;height:82px;object-fit:contain;display:block;margin-bottom:8px"><h2>Necesito regenerarme</h2><p>Radar inspirado en AJOLOTE para observar posibles desajustes sin convertirlos en diagnÃ³stico.</p><span class="tag">Autenticidad Â· Historia Â· Origen Â· LÃ­mites Â· Onus Â· TransformaciÃ³n Â· Esencia</span></button>
+    </div>
+  </section>
+
+  <section class="app" id="focus" aria-labelledby="focusTitle"><div class="ah"><div><div class="k">Ruta F.O.C.U.S.</div><h2 id="focusTitle" tabindex="-1">Â¿DÃ³nde necesitas direcciÃ³n hoy?</h2><p>1 = necesito atenderlo Â· 5 = se siente sÃ³lido hoy.</p></div><img src="./assets/focus.webp" alt="" aria-hidden="true" style="width:96px;height:96px;object-fit:contain;display:block;margin-left:auto;align-self:center"><button type="button" class="back" onclick="goHome()">â† Volver</button></div><div class="grid"><div class="panel" id="focusForm"></div><div class="panel"><div class="res empty" id="focusRes" tabindex="-1" aria-live="polite">Tu reflexiÃ³n aparecerÃ¡ aquÃ­.<br>La herramienta identifica Ã¡reas para explorar, no una calificaciÃ³n personal.</div></div></div></section>
+
+  <section class="app" id="axo" aria-labelledby="axoTitle"><div class="ah"><div><div class="k">Ruta AJOLOTE</div><h2 id="axoTitle" tabindex="-1">Â¿DÃ³nde puede haber un desajuste hoy?</h2><p>1 = quiero explorarlo Â· 5 = se siente alineado.</p></div><img src="./assets/ajolote.webp" alt="" aria-hidden="true" style="width:96px;height:96px;object-fit:contain;display:block;margin-left:auto;align-self:center"><button type="button" class="back" onclick="goHome()">â† Volver</button></div><div class="grid"><div class="panel" id="axoForm"></div><div class="panel"><div class="res empty" id="axoRes" tabindex="-1" aria-live="polite">Tu reflexiÃ³n aparecerÃ¡ aquÃ­.<br>Propone un Ã¡rea de observaciÃ³n; no diagnostica.</div></div></div></section>
+
+  <section class="history" aria-labelledby="historyTitle"><div class="historytop"><h3 id="historyTitle">Mi recorrido en este dispositivo</h3><button type="button" class="clearbtn" onclick="clearHistory()">Borrar historial local</button></div><div id="historyList" aria-live="polite">TodavÃ­a no has guardado ninguna microacciÃ³n.</div><div id="storageNotice" class="note" aria-live="polite"></div></section>
+
+  <section class="history" id="feedbackCard" aria-labelledby="feedbackTitle"></section>
+
+  <div class="privacy"><strong>Privacidad de esta versiÃ³n.</strong> Tus respuestas del cuestionario, frase de contexto, microacciones e historial permanecen sÃ³lo en este navegador y no se envÃ­an a PotencIA. BrÃºjula sÃ­ envÃ­a eventos tÃ©cnicos mÃ­nimos de uso: un identificador aleatorio de sesiÃ³n, versiÃ³n, ruta elegida, clase de dispositivo, rango aproximado de pantalla, duraciÃ³n por rangos e idioma. Si decides enviar feedback, se transmiten ademÃ¡s tu calificaciÃ³n y el comentario que escribas. Evita incluir datos sensibles en ese comentario. El identificador tÃ©cnico de sesiÃ³n no contiene tu nombre ni correo y se conserva sÃ³lo durante la sesiÃ³n del navegador.</div>
+
+  <div class="foot"><strong>Prototipo de validaciÃ³n v0.3.3 desarrollado para PotencIA Academy.</strong> Basado conceptualmente en <em>F.O.C.U.S.</em> y <em>La SabidurÃ­a del Ajolote</em>, obras de la Dra. Claudia Jones. Esta versiÃ³n no utiliza IA externa ni requiere cuenta.<br><br><strong>LÃ­mite de uso:</strong> herramienta educativa y reflexiva. No constituye diagnÃ³stico, terapia ni recomendaciÃ³n clÃ­nica.</div>
+</div>
+
+<script src="./data.js"></script>
+<script src="./app.js"></script>
+<script src="./telemetry.js"></script>
+</body>
+</html>
+

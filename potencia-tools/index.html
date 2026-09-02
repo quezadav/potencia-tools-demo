@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PotencIA Tools — Demo</title>
+<style>
+:root{
+  --bg:#070817;
+  --panel:#10122a;
+  --panel2:#151838;
+  --text:#f4f6ff;
+  --muted:#aab0d6;
+  --purple:#9b4dff;
+  --magenta:#e648ff;
+  --cyan:#28c7ff;
+  --green:#34d399;
+  --border:rgba(255,255,255,.10);
+  --shadow:0 18px 50px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 15% 5%, rgba(155,77,255,.18), transparent 30%),
+    radial-gradient(circle at 85% 15%, rgba(40,199,255,.12), transparent 25%),
+    linear-gradient(180deg,#070817 0%,#090b1f 100%);
+  color:var(--text);
+  min-height:100vh;
+}
+.wrap{max-width:1180px;margin:auto;padding:28px 22px 70px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0 26px}
+.brand{display:flex;align-items:center;gap:14px;font-weight:800;letter-spacing:.3px}
+.logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--cyan),var(--purple),var(--magenta));display:grid;place-items:center;box-shadow:0 0 32px rgba(155,77,255,.4);font-weight:900;color:white}
+.badge{font-size:12px;color:#d9dcff;border:1px solid var(--border);background:rgba(255,255,255,.04);padding:7px 11px;border-radius:999px}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center;padding:34px 0 26px}
+.hero h1{font-size:clamp(42px,6vw,76px);line-height:.98;margin:0 0 18px}
+.grad{background:linear-gradient(90deg,#fff 0%,#c8d4ff 28%,#9b4dff 60%,#e648ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:20px;line-height:1.55;color:var(--muted);max-width:720px;margin:0}
+.hero-card{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));border:1px solid var(--border);border-radius:26px;padding:26px;box-shadow:var(--shadow)}
+.hero-card h3{margin:0 0 12px;font-size:21px}
+.metric{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--border)}
+.metric:last-child{border-bottom:0}.metric strong{font-size:15px}.metric span{color:var(--muted);font-size:14px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:34px 0 18px}
+.tab{cursor:pointer;text-align:left;padding:18px;border-radius:18px;border:1px solid var(--border);background:rgba(255,255,255,.035);color:white;transition:.2s transform,.2s border-color,.2s background}
+.tab:hover{transform:translateY(-2px);border-color:rgba(155,77,255,.5)}
+.tab.active{background:linear-gradient(180deg,rgba(155,77,255,.22),rgba(155,77,255,.07));border-color:rgba(155,77,255,.65);box-shadow:0 0 0 1px rgba(155,77,255,.08) inset,0 16px 40px rgba(42,17,84,.25)}
+.tab .num{font-size:12px;color:#d9caff;font-weight:700;letter-spacing:1px;text-transform:uppercase}.tab h3{margin:7px 0 6px;font-size:20px}.tab p{margin:0;color:var(--muted);font-size:14px;line-height:1.45}
+.tool{display:none;grid-template-columns:.9fr 1.1fr;gap:20px;background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:24px;padding:20px;box-shadow:var(--shadow)}
+.tool.active{display:grid}
+.panel{background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));border:1px solid var(--border);border-radius:20px;padding:22px}
+.panel h2{margin:0 0 8px;font-size:25px}.panel .lead{color:var(--muted);margin:0 0 20px;line-height:1.5}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-size:12px;color:#dce0ff;margin:0 0 7px;font-weight:700;letter-spacing:.25px}
+input,select,textarea{width:100%;border-radius:12px;border:1px solid var(--border);background:#0b0e22;color:white;padding:12px 13px;outline:none;font:inherit;transition:.2s;border-color .2s}
+input:focus,select:focus,textarea:focus{border-color:rgba(155,77,255,.7);box-shadow:0 0 0 3px rgba(155,77,255,.11)}
+textarea{min-height:88px;resize:vertical}.field{margin-bottom:12px}.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+button.primary,button.secondary{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer;font-size:14px}
+button.primary{color:white;background:linear-gradient(90deg,var(--purple),var(--magenta));box-shadow:0 10px 25px rgba(155,77,255,.22)}
+button.secondary{color:#e9ebff;background:rgba(255,255,255,.06);border:1px solid var(--border)}
+.output{min-height:390px;white-space:pre-wrap;line-height:1.58;color:#edf0ff;background:#090c1f;border:1px solid var(--border);border-radius:16px;padding:18px;font-size:15px}
+.output.empty{color:#7f86ac;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px}
+.result-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.result-head h3{margin:0;font-size:18px}.copy{font-size:13px;border:1px solid var(--border);background:rgba(255,255,255,.05);color:#fff;border-radius:10px;padding:8px 10px;cursor:pointer}
+.footer{margin-top:28px;padding:22px;border-radius:18px;border:1px solid var(--border);background:linear-gradient(90deg,rgba(40,199,255,.05),rgba(155,77,255,.08));color:var(--muted);font-size:14px;line-height:1.6}
+.kicker{font-size:13px;text-transform:uppercase;letter-spacing:1.8px;color:#b99cff;font-weight:800;margin-bottom:10px}.pill{display:inline-block;padding:7px 10px;border-radius:999px;background:rgba(52,211,153,.10);border:1px solid rgba(52,211,153,.25);color:#9af2cb;font-size:12px;font-weight:800}.small{font-size:12px;color:#8088b4;margin-top:10px}
+@media(max-width:860px){.hero,.tool{grid-template-columns:1fr}.tabs{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div class="brand"><div class="logo">P</div><div><div>PotencIA Academy</div><div style="font-size:12px;color:var(--muted);font-weight:600">Human intelligence · AI empowerment · real impact</div></div></div><div class="badge">DEMO</div></div>
+  <section class="hero"><div><div class="kicker">PotencIA Tools</div><h1><span class="grad">IA útil</span><br>para tu negocio.</h1><p>Una caja de herramientas que convierte lo aprendido en clase en acciones concretas que puedes reutilizar cada semana.</p></div><div class="hero-card"><h3>Del curso al uso recurrente</h3><div class="metric"><strong>1. Aprendes</strong><span>Conceptos y casos prácticos</span></div><div class="metric"><strong>2. Aplicas</strong><span>Herramientas guiadas</span></div><div class="metric"><strong>3. Guardas</strong><span>Prompts y procesos reutilizables</span></div><div class="metric"><strong>4. Regresas</strong><span>Valor continuo después de clase</span></div></div></section>
+  <div class="tabs"><button class="tab active" data-target="promptTool"><div class="num">Módulo 2</div><h3>Crea tu Prompt</h3><p>Transforma una necesidad de negocio en una instrucción clara para ChatGPT.</p></button><button class="tab" data-target="autoTool"><div class="num">Módulo 8</div><h3>Diseña tu Automatización</h3><p>Convierte tareas repetitivas en un flujo simple y accionable.</p></button><button class="tab" data-target="agentTool"><div class="num">Módulo 9</div><h3>Diseña tu Agente IA</h3><p>Define qué podría delegarse a un agente y dónde debe intervenir una persona.</p></button></div>
+  <section class="tool active" id="promptTool"><div class="panel"><div class="pill">Herramienta funcional</div><h2 style="margin-top:12px">Crea tu Prompt</h2><p class="lead">Cuéntanos qué haces y qué necesitas. PotencIA convierte tu idea en un prompt listo para copiar.</p><div class="grid2"><div class="field"><label>Tipo de negocio</label><input id="p_business" placeholder="Ej. Barbería"></div><div class="field"><label>Ciudad</label><input id="p_city" placeholder="Ej. Houston"></div></div><div class="field"><label>¿Qué quieres lograr?</label><textarea id="p_task" placeholder="Ej. Reactivar clientes que no han venido en un mes"></textarea></div><div class="grid2"><div class="field"><label>Cliente o público</label><input id="p_audience" placeholder="Ej. Hombres de 25 a 45 años"></div><div class="field"><label>Tono</label><select id="p_tone"><option>Amable y profesional</option><option>Cercano y humano</option><option>Elegante</option><option>Directo y breve</option><option>Entusiasta</option></select></div></div><div class="field"><label>Formato de salida</label><select id="p_format"><option>3 mensajes de WhatsApp</option><option>5 ideas en lista</option><option>1 publicación para redes</option><option>Tabla con opciones</option><option>Plan paso a paso</option></select></div><div class="btnrow"><button class="primary" onclick="buildPrompt()">Generar prompt</button><button class="secondary" onclick="examplePrompt()">Probar con ejemplo</button></div></div><div class="panel"><div class="result-head"><h3>Resultado</h3><button class="copy" onclick="copyOut('promptOut')">Copiar</button></div><div class="output empty" id="promptOut">Tu prompt aparecerá aquí.<br>Completa los campos o prueba el ejemplo.</div></div></section>
+  <section class="tool" id="autoTool"><div class="panel"><div class="pill">Demo funcional</div><h2 style="margin-top:12px">Diseña tu Automatización</h2><p class="lead">Describe una tarea repetitiva. La herramienta propone un flujo simple y dónde podría entrar la IA.</p><div class="field"><label>¿Qué evento inicia el proceso?</label><input id="a_trigger" placeholder="Ej. Un cliente pide información por formulario"></div><div class="field"><label>¿Qué quieres que ocurra después?</label><textarea id="a_action" placeholder="Ej. Responder, registrar al cliente y avisarme"></textarea></div><div class="grid2"><div class="field"><label>Herramientas actuales</label><input id="a_tools" placeholder="Ej. Gmail, Google Sheets, WhatsApp"></div><div class="field"><label>Frecuencia</label><select id="a_freq"><option>Varias veces al día</option><option>Una vez al día</option><option>Varias veces por semana</option><option>Ocasionalmente</option></select></div></div><div class="btnrow"><button class="primary" onclick="buildAutomation()">Diseñar flujo</button><button class="secondary" onclick="exampleAutomation()">Probar con ejemplo</button></div></div><div class="panel"><div class="result-head"><h3>Flujo sugerido</h3><button class="copy" onclick="copyOut('autoOut')">Copiar</button></div><div class="output empty" id="autoOut">Aquí aparecerá un flujo sencillo con pasos, herramientas y puntos de revisión humana.</div></div></section>
+  <section class="tool" id="agentTool"><div class="panel"><div class="pill">Demo funcional</div><h2 style="margin-top:12px">Diseña tu Agente IA</h2><p class="lead">No todo necesita un agente. Esta herramienta te ayuda a definir cuándo sí tiene sentido y qué debería hacer.</p><div class="field"><label>Rol que tendría el agente</label><input id="g_role" placeholder="Ej. Asistente de seguimiento de prospectos"></div><div class="field"><label>Tarea recurrente</label><textarea id="g_task" placeholder="Ej. Revisar prospectos nuevos y preparar el siguiente contacto"></textarea></div><div class="field"><label>Información que necesitaría consultar</label><input id="g_inputs" placeholder="Ej. CRM, correos, catálogo de servicios"></div><div class="grid2"><div class="field"><label>Nivel de autonomía</label><select id="g_auto"><option>Bajo: propone, yo apruebo</option><option>Medio: ejecuta tareas simples</option><option>Alto: ejecuta y escala excepciones</option></select></div><div class="field"><label>¿Qué debe revisar una persona?</label><input id="g_human" placeholder="Ej. Precios y mensajes sensibles"></div></div><div class="btnrow"><button class="primary" onclick="buildAgent()">Crear blueprint</button><button class="secondary" onclick="exampleAgent()">Probar con ejemplo</button></div></div><div class="panel"><div class="result-head"><h3>Blueprint del agente</h3><button class="copy" onclick="copyOut('agentOut')">Copiar</button></div><div class="output empty" id="agentOut">Aquí verás misión, entradas, acciones, límites y puntos de intervención humana.</div></div></section>
+  <div class="footer"><strong style="color:#fff">Prototipo desarrollado para PotencIA Academy.</strong> Una exploración de cómo convertir lo aprendido en clase en herramientas prácticas y reutilizables para el día a día.<div class="small">Este prototipo funciona completamente en el navegador y no envía datos a servicios externos.</div></div>
+</div>
+<script>
+document.querySelectorAll('.tab').forEach(tab=>{tab.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tool').forEach(t=>t.classList.remove('active'));tab.classList.add('active');document.getElementById(tab.dataset.target).classList.add('active')})});
+function val(id){return document.getElementById(id).value.trim()}
+function setOut(id,txt){const el=document.getElementById(id);el.classList.remove('empty');el.textContent=txt}
+function copyOut(id){const txt=document.getElementById(id).textContent;navigator.clipboard.writeText(txt).then(()=>{const btn=event.target,old=btn.textContent;btn.textContent='Copiado ✓';setTimeout(()=>btn.textContent=old,1200)})}
+function buildPrompt(){const b=val('p_business')||'[tipo de negocio]',c=val('p_city')||'[ciudad]',t=val('p_task')||'[objetivo o tarea]',a=val('p_audience')||'[tipo de cliente]',tone=val('p_tone'),f=val('p_format');setOut('promptOut',`Actúa como mi asistente de negocio.\n\nTengo un(a) ${b} en ${c}. Quiero lograr lo siguiente: ${t}.\n\nMi cliente o público principal es: ${a}.\n\nQuiero que el tono sea ${tone.toLowerCase()}.\n\nEntrégame el resultado en este formato: ${f.toLowerCase()}.\n\nHazlo claro, específico y listo para usar. Si te falta algún dato importante, hazme primero hasta 3 preguntas concretas antes de responder.`)}
+function examplePrompt(){document.getElementById('p_business').value='Barbería';document.getElementById('p_city').value='Houston';document.getElementById('p_task').value='Reactivar clientes que no han venido en un mes';document.getElementById('p_audience').value='Hombres de 25 a 45 años';document.getElementById('p_tone').value='Cercano y humano';document.getElementById('p_format').value='3 mensajes de WhatsApp';buildPrompt()}
+function buildAutomation(){const tr=val('a_trigger')||'[evento que inicia]',ac=val('a_action')||'[resultado deseado]',tools=val('a_tools')||'herramientas actuales del negocio',fr=val('a_freq');setOut('autoOut',`OBJETIVO\nAutomatizar un proceso que ocurre ${fr.toLowerCase()}.\n\nDISPARADOR\n1. Cuando ocurra: ${tr}.\n\nFLUJO PROPUESTO\n2. Capturar la información necesaria.\n3. Usar ${tools} como parte del flujo actual.\n4. Ejecutar la acción principal: ${ac}.\n5. Si hace falta redactar, clasificar o resumir información, usar IA como apoyo.\n6. Guardar un registro del resultado.\n7. Avisar a una persona cuando exista una excepción o decisión sensible.\n\nREVISIÓN HUMANA\n• Mantener aprobación humana para precios, compromisos, datos sensibles y mensajes delicados.\n• Empezar automatizando sólo la parte repetitiva y medible.\n\nPRIMER PASO RECOMENDADO\nProbar este flujo durante una semana con pocos casos, medir tiempo ahorrado y después decidir qué parte conviene automatizar por completo.`)}
+function exampleAutomation(){document.getElementById('a_trigger').value='Un cliente llena un formulario pidiendo información';document.getElementById('a_action').value='Enviar una respuesta inicial, registrar al prospecto y avisarme';document.getElementById('a_tools').value='Gmail, Google Sheets y WhatsApp';document.getElementById('a_freq').value='Varias veces al día';buildAutomation()}
+function buildAgent(){const r=val('g_role')||'[rol del agente]',t=val('g_task')||'[tarea recurrente]',i=val('g_inputs')||'[fuentes de información]',a=val('g_auto'),h=val('g_human')||'[decisiones sensibles]';setOut('agentOut',`NOMBRE DEL AGENTE\n${r}\n\nMISIÓN\nAyudar de forma recurrente con: ${t}.\n\nINFORMACIÓN QUE CONSULTA\n• ${i}\n\nNIVEL DE AUTONOMÍA\n• ${a}\n\nQUÉ PODRÍA HACER\n1. Revisar nueva información relacionada con su misión.\n2. Clasificar y priorizar casos.\n3. Preparar borradores, recomendaciones o siguientes acciones.\n4. Ejecutar tareas simples cuando estén claramente autorizadas.\n5. Escalar excepciones a una persona.\n\nLÍMITES\n• No debe inventar datos.\n• No debe tomar decisiones fuera de las reglas definidas.\n• Debe registrar lo que hizo y por qué.\n\nINTERVENCIÓN HUMANA\n• Una persona debe revisar: ${h}.\n\nRECOMENDACIÓN\nEmpezar con autonomía baja. Cuando el proceso sea estable y medible, aumentar la autonomía sólo en tareas de bajo riesgo.`)}
+function exampleAgent(){document.getElementById('g_role').value='Asistente de seguimiento de prospectos';document.getElementById('g_task').value='Revisar prospectos nuevos, priorizarlos y preparar el siguiente contacto';document.getElementById('g_inputs').value='CRM, correos y catálogo de servicios';document.getElementById('g_auto').value='Bajo: propone, yo apruebo';document.getElementById('g_human').value='Precios, descuentos y mensajes sensibles';buildAgent()}
+</script>
+</body>
+</html>

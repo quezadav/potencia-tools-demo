@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brújula PotencIA — PotencIA Academy</title>
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="./p2.css">
+</head>
+<body>
+<div class="w">
+  <div class="top">
+    <div class="brand"><img src="./assets/potencia-academy-logo.webp" alt="" aria-hidden="true" style="width:54px;height:54px;object-fit:contain;display:block"><div>PotencIA Academy</div></div>
+  </div>
+
+  <section class="follow" id="followCard" aria-live="polite"></section>
+
+  <section class="hero" style="padding:26px 0 16px">
+    <div><img src="./assets/brujula.webp" alt="" aria-hidden="true" style="width:90px;height:90px;object-fit:contain;display:block;margin-bottom:10px"><div class="k">Brújula PotencIA</div><h1 style="font-size:clamp(44px,5.3vw,68px)"><span class="gr">Una pausa útil.</span><br>Una dirección para hoy.</h1><p>Una experiencia breve de reflexión inspirada en <b>F.O.C.U.S.</b> y <b>La Sabiduría del Ajolote</b>, de la Dra. Claudia Jones. Observa tu momento, elige un foco y conviértelo en una microacción concreta.</p></div>
+    <div class="box"><h3>Cómo funciona Brújula</h3><p>Brújula no busca darte una etiqueta ni decirte qué hacer. Te ayuda a observar, elegir un foco y volver sobre lo que decidiste.</p><div class="step">1. Me observo con más de una pregunta</div><div class="step">2. Identifico un foco, sin convertirlo en diagnóstico</div><div class="step">3. Elijo una microacción</div><div class="step">4. Regreso y reviso qué pasó</div></div>
+  </section>
+
+  <section id="home">
+    <div style="margin:4px 0 2px"><div class="k">Empieza aquí</div><h2 style="margin:5px 0 0;font-size:28px">¿Qué necesitas hoy?</h2></div>
+    <div class="choices" style="margin-top:14px">
+      <button type="button" class="card f" onclick="openRoute('focus')"><img src="./assets/focus.webp" alt="" aria-hidden="true" style="width:82px;height:82px;object-fit:contain;display:block;margin-bottom:8px"><h2>Necesito dirección</h2><p>Check-in basado en F.O.C.U.S. para observar qué dimensión de propósito merece atención hoy.</p><span class="tag">Felicidad · Oportunidad · Convicción · Unidad · Sentido</span></button>
+      <button type="button" class="card a" onclick="openRoute('axo')"><img src="./assets/ajolote.webp" alt="" aria-hidden="true" style="width:82px;height:82px;object-fit:contain;display:block;margin-bottom:8px"><h2>Necesito regenerarme</h2><p>Radar inspirado en AJOLOTE para observar posibles desajustes sin convertirlos en diagnóstico.</p><span class="tag">Autenticidad · Historia · Origen · Límites · Onus · Transformación · Esencia</span></button>
+    </div>
+  </section>
+
+  <div class="safety"><strong>Tu seguridad va primero.</strong> Puedes detenerte en cualquier momento. Si una pregunta te genera malestar intenso o toca una situación en la que tu seguridad está en riesgo, no necesitas continuar con Brújula; busca apoyo humano de confianza o ayuda profesional adecuada a tu situación. Esta herramienta no sustituye atención clínica, legal, financiera ni de emergencia.</div>
+
+  <section class="app" id="focus" aria-labelledby="focusTitle"><div class="ah"><div><div class="k">Ruta F.O.C.U.S.</div><h2 id="focusTitle" tabindex="-1">¿Dónde necesitas dirección hoy?</h2><p>1 = necesito atenderlo · 5 = se siente sólido hoy.</p></div><img src="./assets/focus.webp" alt="" aria-hidden="true" style="width:96px;height:96px;object-fit:contain;display:block;margin-left:auto;align-self:center"><button type="button" class="back" onclick="goHome()">← Volver</button></div><div class="grid"><div class="panel" id="focusForm"></div><div class="panel"><div class="res empty" id="focusRes" tabindex="-1" aria-live="polite">Tu reflexión aparecerá aquí.<br>La herramienta identifica áreas para explorar, no una calificación personal.</div></div></div></section>
+
+  <section class="app" id="axo" aria-labelledby="axoTitle"><div class="ah"><div><div class="k">Ruta AJOLOTE</div><h2 id="axoTitle" tabindex="-1">¿Dónde puede haber un desajuste hoy?</h2><p>1 = quiero explorarlo · 5 = se siente alineado.</p></div><img src="./assets/ajolote.webp" alt="" aria-hidden="true" style="width:96px;height:96px;object-fit:contain;display:block;margin-left:auto;align-self:center"><button type="button" class="back" onclick="goHome()">← Volver</button></div><div class="grid"><div class="panel" id="axoForm"></div><div class="panel"><div class="res empty" id="axoRes" tabindex="-1" aria-live="polite">Tu reflexión aparecerá aquí.<br>Propone un área de observación; no diagnostica.</div></div></div></section>
+
+  <section class="history" aria-labelledby="historyTitle"><div class="historytop"><h3 id="historyTitle">Mi recorrido en este dispositivo</h3><button type="button" class="clearbtn" onclick="clearHistory()">Borrar historial local</button></div><div id="historyList" aria-live="polite">Todavía no has guardado ninguna microacción.</div><div id="storageNotice" class="note" aria-live="polite"></div></section>
+
+  <section class="history" id="feedbackCard" aria-labelledby="feedbackTitle"></section>
+
+  <div class="privacy"><strong>Tu privacidad.</strong> Tus respuestas, frase de contexto, microacciones e historial permanecen sólo en este navegador y no se envían a PotencIA. Para mejorar Brújula se envían únicamente datos técnicos mínimos: un identificador aleatorio de sesión, versión, ruta elegida, clase de dispositivo, rango aproximado de pantalla, duración por rangos e idioma. Si envías feedback, también se transmiten la calificación y el comentario que escribas. No incluyas información sensible. El identificador no contiene tu nombre ni correo y dura sólo durante la sesión del navegador.</div>
+
+  <div class="foot"><strong>Brújula PotencIA · PotencIA Academy.</strong> Basada conceptualmente en <em>F.O.C.U.S.</em> y <em>La Sabiduría del Ajolote</em>, obras de la Dra. Claudia Jones. Tus respuestas se procesan en este navegador y no necesitas una cuenta.<br><br><strong>Límite de uso:</strong> herramienta educativa y reflexiva. No constituye diagnóstico, terapia ni recomendación clínica.</div>
+</div>
+
+<script src="./data.js"></script>
+<script src="./app.js"></script>
+<script src="./p2-ux.js"></script>
+<script src="./telemetry.js"></script>
+</body>
+</html>

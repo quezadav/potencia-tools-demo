@@ -1,0 +1,29 @@
+.p2-range-source{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important;overflow:hidden!important}
+.score-choices{display:grid;grid-template-columns:repeat(5,minmax(44px,1fr));gap:10px;margin-top:10px}
+.score-choice{min-height:44px;border:1px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.035);color:#f7f8ff;font:inherit;font-weight:800;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .15s ease,box-shadow .15s ease}
+.score-choice:hover{border-color:rgba(168,85,247,.68);background:rgba(168,85,247,.10);transform:translateY(-1px)}
+.score-choice:focus-visible{outline:2px solid rgba(63,196,255,.72);outline-offset:2px}
+.score-choice.is-selected{border-color:#a855f7;background:rgba(168,85,247,.22);box-shadow:0 0 0 1px rgba(168,85,247,.16)}
+.q.missing-answer{margin:4px -9px;padding:12px 9px;border-radius:12px;background:rgba(242,186,80,.07);outline:1px solid rgba(242,186,80,.32)}
+.q.missing-answer .qt{color:#fff4d6}
+
+/* P2 bloque 5: antes de generar una reflexión, el cuestionario usa el espacio útil. */
+.app.question-mode .grid{grid-template-columns:1fr}
+.app.question-mode .grid>.panel:first-child{width:100%;max-width:920px;margin:0 auto}
+.app.question-mode .grid>.panel:last-child{display:none}
+
+/* P2.3-02: el promedio se conserva para el cálculo, pero no se muestra como puntuación al usuario. */
+.dimhead .avg{display:none}
+
+/* P2 bloque 7: feedback y cierre visual coherentes con Brújula. */
+#feedbackCard select{color-scheme:dark;background:#0b1028;color:#f7f8ff;border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:9px 11px;font:inherit}
+#feedbackCard select:focus{outline:2px solid rgba(63,196,255,.65);outline-offset:2px}
+.follow.follow-confirmed{border-color:rgba(126,240,199,.34)}
+.follow-confirmation{padding:2px 0}
+.follow-confirmation .k{color:#8ef4d0}
+.follow-confirmation h3{margin:5px 0 4px}
+
+@media(max-width:520px){
+  .score-choices{gap:6px}
+  .score-choice{min-height:46px;padding:8px 0}
+}
